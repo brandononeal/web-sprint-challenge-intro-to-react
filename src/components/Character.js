@@ -18,7 +18,9 @@ const StyledDetails = styled.div`
 export default function Character(props) {
   const { character } = props;
   const [showDetails, setShowDetails] = useState(false);
-  const onClick = () => setShowDetails(true);
+  function onClick() {
+    setShowDetails((showDetails) => !showDetails);
+  }
 
   return (
     <StyledDetails>
