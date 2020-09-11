@@ -16,15 +16,6 @@ const StyledTitle = styled.div`
 
 const App = () => {
   const [character, setCharacter] = useState([]);
-  // const [currentCharacter, setCurrentCharacter] = useState(null);
-
-  // const openCharacter = (id) => {
-  //   setCurrentCharacter(id);
-  // };
-
-  // const closeCharacter = (id) => {
-  //   setCurrentCharacter(null);
-  // };
 
   useEffect(() => {
     axios
@@ -44,7 +35,6 @@ const App = () => {
         {character.map((characterObject) => {
           return <Character character={characterObject} />;
         })}
-        {console.log(character)}
       </div>
     </StyledTitle>
   );

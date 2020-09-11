@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import Details from "./Details";
 
 const StyledDetails = styled.div`
   color: ${(pr) => pr.theme.secondaryColor};
@@ -9,21 +10,23 @@ const StyledDetails = styled.div`
   h3 {
     font-size: 1.5rem;
   }
+  button {
+    margin-bottom: 5%;
+  }
 `;
 
 export default function Character(props) {
   const { character } = props;
+  const [showDetails, setShowDetails] = useState(false);
+  const onClick = () => setShowDetails(true);
 
   return (
     <StyledDetails>
       <div className="characters-container">
         <img src={character.image} alt={character.name}></img>
-        <h2>Name: {character.name}</h2>
-        <h3>Status: {character.status}</h3>
-        <h3>Gender: {character.gender}</h3>
-        <h3>Species: {character.species}</h3>
-        <h3>Origin: {character.origin.name}</h3>
-        <h3>Location: {character.location.name}</h3>
+        <h2>{character.name}</h2>
+        <button onClick={onClick}>Details</button>
+        {showDetails ? <Details character={character} /> : null}
       </div>
     </StyledDetails>
   );
